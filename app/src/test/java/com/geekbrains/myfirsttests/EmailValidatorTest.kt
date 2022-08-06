@@ -42,4 +42,23 @@ class EmailValidatorTest {
     }
 
     //Добавление негативных тестов
+    @Test
+    fun emailValidator_NoDomainEmail_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name@"))
+    }
+
+    @Test
+    fun emailValidator_HalfDomainEmail_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name@.com"))
+    }
+
+    @Test
+    fun emailValidator_SingleWordEmail_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name"))
+    }
+
+    @Test
+    fun emailValidator_NoDogSymbolEmail_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name.email.com"))
+    }
 }
